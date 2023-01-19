@@ -141,7 +141,7 @@ works.*
     -   Thus, choosing the architecture really means choosing a family of
         different models (one for each setting of the model hyperparameters).
     -   We will consider the problem of choosing the model hyperparameters in
-        [Choosing the initial configuration](##choosing-the-initial-configuration)
+        [Choosing the initial configuration](#choosing-the-initial-configuration)
         and
         [A scientific approach to improving model performance](#a-scientific-approach-to-improving-model-performance).
 -   When possible, try to find a paper that tackles something as close as
@@ -1952,7 +1952,7 @@ scale).">
 -   Clipping can fix either early training instability (large gradient norm
     early), or mid training instabilities (sudden gradient spikes mid training).
 -   Sometimes longer warmup periods can correct instabilities that clipping does
-    not: see [this section](#How-to-apply-learning-rate-warmup).
+    not: see [this section above](#How-to-apply-learning-rate-warmup).
     -   🤖 What about clipping during warmup?
 -   The ideal clip thresholds are just above the "typical" gradient norm.
 -   Here’s an example of how gradient clipping could be done:
@@ -2104,7 +2104,7 @@ $$\theta_{t+1} = \theta_{t} - \alpha_t \frac{\beta_1 m_{t+1} + (1 - \beta_1) \na
 
 -   We'd love to hear your feedback!
 
-    -   If you like the playbook, please leave a star! Or email
+    -   If you like the playbook, please [leave a star](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars#starring-a-repository)! Or email
         deep-learning-tuning-playbook \[at\] googlegroups.com. Testimonials help
         us justify creating more resources like this.
     -   If anything seems incorrect, please file an issue to start a discussion.
