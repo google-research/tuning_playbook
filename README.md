@@ -365,6 +365,7 @@ will be the largest batch size supported by the available hardware.*
 -   The optimal values of most hyperparameters are sensitive to the batch size.
     Therefore, changing the batch size typically requires starting the tuning
     process all over again.
+-   The hyperparameters that interact most strongly with the batch size, and therefore are most important to tune separately for each batch size, are the optimizer hyperparameters (e.g. learning rate, momentum) and the regularization hyperparameters.
 -   Keep this in mind when choosing the batch size at the start of a project. If
     you need to switch to a different batch size later on, it might be
     difficult, time consuming, and expensive to re-tune everything for the new
@@ -1993,11 +1994,11 @@ scale).">
     word "hyperparameter" (confusion that is especially likely when discussing
     Bayesian optimization where the probabilistic response surface models have
     their own true hyperparameters).
--   Unfortunately, although incorrect, the term hyperparameter has become
+-   Unfortunately, although potentially confusing, the term hyperparameter has become
     extremely common in the deep learning community.
 -   Therefore, for a document, such as this one, intended for a wide audience
     that includes many people who are unlikely to be aware of this technicality,
-    we made the painful choice to contribute to one source of confusion in the
+    we made the choice to contribute to one source of confusion in the
     field in hopes of avoiding another.
 -   That said, we might make a different choice when publishing a research
     paper, and we would encourage others to use "metaparameter" instead in most
@@ -2010,7 +2011,12 @@ scale).">
 <details><summary>[Click to expand]</summary>
 <br>
 
--   The contents of this section will be available in a future release.
+-   Changing the batch size *without changing any other details of the training pipeline* will often affect the validation set performance.
+-   However, the difference in validation set performance between two batch sizes typically goes away if the training pipeline is optimized independently for each batch size.
+-   The hyperparameters that interact most strongly with the batch size, and therefore are most important to tune separately for each batch size, are the optimizer hyperparameters (e.g. learning rate, momentum) and the regularization hyperparameters.
+    - Smaller batch sizes introduce more noise into the training algorithm due to sample variance, and this noise can have a regularizing effect. Thus, larger batch sizes can be more prone to overfitting and may require stronger regularization and/or additional regularization techniques.
+- In addition, [the number of training steps may need to be adjusted](#choosing-the-batch-size-to-minimize-training-time) when changing the batch size.
+-   Once all these effects are taken into account, there is currently no convincing evidence that the batch size affects the maximum achievable validation performance (see [Shallue et al. 2018](https://arxiv.org/abs/1811.03600)).
 
 </details>
 
