@@ -1584,7 +1584,7 @@ multi-host training can make it very easy to introduce bugs!*
 
 ### What is the best learning rate decay schedule family?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 
 <br>
 
@@ -1600,7 +1600,7 @@ multi-host training can make it very easy to introduce bugs!*
 
 ### Which learning rate decay should I use as a default?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 <br>
 
 -   Our preference is either linear decay or cosine decay, and a bunch of other
@@ -1610,7 +1610,7 @@ multi-host training can make it very easy to introduce bugs!*
 
 ### Why do some papers have complicated learning rate schedules?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 <br>
 
 -   It’s not uncommon to see papers with complicated piecewise learning rate
@@ -1640,7 +1640,7 @@ multi-host training can make it very easy to introduce bugs!*
 
 ### How should Adam’s hyperparameters be tuned?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 <br>
 
 -   As discussed above, making general statements about search spaces and how
@@ -1658,7 +1658,7 @@ multi-host training can make it very easy to introduce bugs!*
 
 ### Why use quasi-random search instead of more sophisticated black box optimization algorithms during the exploration phase of tuning?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 
 -   Quasi-random search (based on
     [low-discrepancy sequences](https://en.wikipedia.org/wiki/Low-discrepancy_sequence))
@@ -1747,7 +1747,7 @@ multi-host training can make it very easy to introduce bugs!*
 
 ### Where can I find an implementation of quasi-random search?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 <br>
 
 -   We use
@@ -1766,7 +1766,7 @@ multi-host training can make it very easy to introduce bugs!*
 
 ### How many trials are needed to get good results with quasi-random search?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 <br>
 
 <p align="center">
@@ -1793,7 +1793,7 @@ Box plots of the best performances for each trial budget are plotted above.
 
 ### How can optimization failures be debugged and mitigated?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 <br>
 
 
@@ -1981,7 +1981,7 @@ scale).">
 
 ### Why do you call the learning rate and other optimization parameters hyperparameters? They are not parameters of any prior distribution.
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 <br>
 
 -   It is true that the term "hyperparameter" has a precise
@@ -2008,7 +2008,7 @@ scale).">
 
 ### Why shouldn't the batch size be tuned to directly improve validation set performance?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 <br>
 
 -   Changing the batch size *without changing any other details of the training pipeline* will often affect the validation set performance.
@@ -2022,7 +2022,7 @@ scale).">
 
 ### What are the update rules for all the popular optimization algorithms?
 
-<details><summary>[Click to expand]</summary>
+<details><summary><em>[Click to expand]</em></summary>
 
 <br>
 
