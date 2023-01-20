@@ -32,7 +32,7 @@
     -   [Deciding how long to train when training is compute-bound](#Deciding-how-long-to-train-when-training-is-compute-bound)
 -   [Additional guidance for the training pipeline](#Additional-guidance-for-the-training-pipeline)
     -   [Optimizing the input pipeline](#Optimizing-the-input-pipeline)
-    -   [Evaluating model performance](Evaluating-model-performance)
+    -   [Evaluating model performance](#evaluating-model-performance)
     -   [Saving checkpoints and retrospectively selecting the best checkpoint](#Saving-checkpoints-and-retrospectively-selecting-the-best-checkpoint)
     -   [Setting up experiment tracking](#Setting-up-experiment-tracking)
     -   [Batch normalization implementation details](#Batch-normalization-implementation-details)
