@@ -58,57 +58,11 @@ the prescriptions in this document may also apply to other types of problems.
 
 ## Why a tuning playbook?
 
-Currently, there is an astonishing amount of toil and guesswork involved in
-actually getting deep neural networks to work well in practice. Even worse, the
-actual recipes people use to get good results with deep learning are rarely
-documented. Papers gloss over the process that led to their final results in
-order to present a cleaner story, and machine learning engineers working on
-commercial problems rarely have time to take a step back and generalize their
-process. Textbooks tend to eschew practical guidance and prioritize fundamental
-principles, even if their authors have the necessary experience in applied work
-to provide useful advice. When preparing to create this document, we couldn't
-find any comprehensive attempt to actually explain *how to get good results with
-deep learning*. Instead, we found snippets of advice in blog posts and on social
-media, tricks peeking out of the appendix of research papers, occasional case
-studies about one particular project or pipeline, and a lot of confusion. There
-is a vast gulf between the results achieved by deep learning experts and less
-skilled practitioners using superficially similar methods. At the same time,
-these very experts readily admit some of what they do might not be
-well-justified. As deep learning matures and has a larger impact on the world,
-the community needs more resources covering useful recipes, including all the
-practical details that can be so critical for obtaining good results.
+Currently, there is an astonishing amount of toil and guesswork involved in actually getting deep neural networks to work well in practice. Even worse, the actual recipes people use to get good results with deep learning are rarely documented. People gloss over the process that led to their final results in order to present a cleaner story, and machine learning engineers working on commercial problems rarely have time to take a step back and generalize their process. Textbooks tend to eschew practical guidance and prioritize fundamental principles, even if their authors have the necessary experience in applied work to provide useful advice. When preparing to create this document, we couldn't find any comprehensive attempt to actually explain *how to get good results with deep learning*. Instead, we found snippets of advice in blog posts and on social media, tricks peeking out of the appendix of research papers, occasional case studies about one particular project or pipeline, and a lot of confusion. There is a vast gulf between the results achieved by deep learning experts and less skilled practitioners using superficially similar methods. At the same time, these very experts readily admit some of what they do might not be well-justified. As deep learning matures and has a larger impact on the world, the community needs more resources covering useful recipes, including all the practical details that can be so critical for obtaining good results.
 
-We are a team of five researchers and engineers who have worked in deep learning
-for many years, some of us since as early as 2006. We have applied deep learning
-to problems in everything from speech recognition to astronomy, and learned a
-lot along the way. This document grew out of our own experience training neural
-networks, teaching new machine learning engineers, and advising our colleagues
-on the practice of deep learning. Although it has been gratifying to see deep
-learning go from a machine learning approach practiced by a handful of academic
-labs to a technology powering products used by billions of people, deep learning
-is still in its infancy as an engineering discipline and we hope this document
-encourages others to help systematize the field's experimental protocols.
+We are a team of five researchers and engineers who have worked in deep learning for many years, some of us since as early as 2006. We have applied deep learning to problems in everything from speech recognition to astronomy, and learned a lot along the way. This document grew out of our own experience training neural networks, teaching new machine learning engineers, and advising our colleagues on the practice of deep learning. Although it has been gratifying to see deep learning go from a machine learning approach practiced by a handful of academic labs to a technology powering products used by billions of people, deep learning is still in its infancy as an engineering discipline, and we hope this document encourages others to help systematize the field's experimental protocols.
 
-This document came about as we tried to crystalize our own approach to deep
-learning and thus it represents the opinions of the authors at the time of
-writing, not any sort of objective truth. Our own struggles with hyperparameter
-tuning made it a particular focus of our guidance, but we also cover other
-important issues we have encountered in our work (or seen go wrong). Our
-intention is for this work to be a living document that grows and evolves as our
-beliefs change. For example, the material on debugging and mitigating training
-failures would not have been possible for us to write two years ago since it is
-based on recent results and ongoing investigations. Inevitably, some of our
-advice will need to be updated to account for new results and improved
-workflows. We do not know the *optimal* deep learning recipe, but until the
-community starts writing down and debating different procedures, we cannot hope
-to find it. To that end, we would encourage readers who find issues with our
-advice to produce alternative recommendations, along with convincing evidence,
-so we can update the playbook. We would also love to see alternative guides and
-playbooks that might have different recommendations so we can work towards best
-practices as a community. Finally, any sections marked with a 🤖 emoji are places
-we would like to do more research. Only after trying to write this playbook did
-it become completely clear how many interesting and neglected research questions
-can be found in the deep learning practitioner's workflow.
+This document came about as we tried to crystalize our own approach to deep learning, and thus it represents the opinions of the authors at the time of writing, not any sort of objective truth. Our own struggles with hyperparameter tuning made it a particular focus of our guidance, but we also cover other important issues we have encountered in our work (or seen go wrong). Our intention is for this work to be a living document that grows and evolves as our beliefs change. For example, the material on debugging and mitigating training failures would not have been possible for us to write two years ago since it is based on recent results and ongoing investigations. Inevitably, some of our advice will need to be updated to account for new results and improved workflows. We do not know the optimal deep learning recipe, but until the community starts writing it down and debating different procedures, we cannot hope to find it. To that end, we would encourage readers who find issues with our advice to produce alternative recommendations, along with convincing evidence, so we can update the playbook. We would also love to see alternative guides and playbooks that might have different recommendations so we can work toward best practices as a community. Finally, any sections marked with a 🤖 emoji are places we would like to do more research. Only after trying to write this playbook did it become completely clear how many interesting and neglected research questions can be found in the deep learning practitioner's workflow.
 
 ## Guide for starting a new project
 
