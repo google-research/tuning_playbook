@@ -612,5 +612,142 @@
 + 具有跨主机相同的 RNG 种子（用于模型初始化）和跨主机不同的种子（用于数据打乱/预处理）至关重要，因此请确保合适地标记它们
 + 通常建议跨主机分片数据文件以提高性能
 
+### 为什么将学习率和其他优化参数称为超参数？ 它们不是任何先验分布的参数。
 
+<details><summary><em>[点击展开]</em></summary>
+<br>
+
+-   确实，在贝叶斯机器学习中，“超参数”这一术语拥有一种更加精确的
+    [含义](https://en.wikipedia.org/wiki/Hyperparameter)，它指代的其实是学习率。其实我们在深度学习中调优的大部分其他参数都被叫做“超参数”，这其实是对术语的一种滥用。
+-   我们更愿意使用“元参数”这个术语来表示学习率、架构参数以及我们在深度学习中调整的所有其他参数， 因为它避免了因滥用“超参数”一词而引起的潜在混淆（例如，可能在讨论贝叶斯优化时，概率响应曲面模型拥有它自己的真实超参数，此时使用超参数一词是不合适的。）
+-   不幸的是，尽管可能会造成混淆，但超参数这个术语在深度学习社区中已经变得极为通俗。
+-   因此，对于一份文档而言，例如本文。为了面向普通大众，我们决定为该领域的一个混乱来源做出贡献，希望避免产生另一个混淆。
+-   也就是说，在发布一篇研究论文的时候，我们可能采取了一种不同的说法。并且，在大多数情况下，我们推荐其他人使用“元参数”这个说法。
+
+</details>
+
+### 为什么不应该调整Batch Size来直接提高验证集性能?
+
+<details><summary><em>[点击展开]</em></summary>
+<br>
+
+-   *在不更改训练管道其他细节的情况下*， 修改batch size 通常会影响验证集的性能。
+-   但是，如果针对每个batch size独立优化训练管道，则两个batch size之间的验证集性能差异通常会消失。
+-   受batch size影响最强烈的那些超参数，即优化器超参数（例如：学习率、动量）和正则化超参数，这些东西对于每个batch size进行单独调优的时候是最重要的。
+    - 由于样本方差的原因，较小的batch size会在训练算法中引入更多的不确定性，并且这些不确定性可能存在着正则化效果。因此，较大的batch size可能更容易过度拟合。并且，这可能需要更强的正则化和/或额外的正则化技术。
+- 此外， 当修改batch size的大小时，[训练步骤的数量可能也需要进行调整](#choosing-the-batch-size-to-minimize-training-time) when changing the batch size.
+-   一旦考虑了所有这些因素带来的影响，目前还没有任何能够令人信服的证据表明batch size会影响最大可实现的验证性能（具体请阅读 [Shallue et al. 2018](https://arxiv.org/abs/1811.03600)）。
+</details>
+
+### 所有流行的优化算法的更新规则是什么？
+
+<details><summary><em>[点击展开]</em></summary>
+
+<br>
+
+#### Stochastic gradient descent (SGD)
+
+$$\theta_{t+1} = \theta_{t} - \eta_t \nabla \mathcal{l}(\theta_t)$$
+
+#### Momentum
+
+$$v_0 = 0$$
+
+$$v_{t+1} = \gamma v_{t} + \nabla \mathcal{l}(\theta_t)$$
+
+$$\theta_{t+1} = \theta_{t} - \eta_t v_{t+1}$$
+
+#### Nesterov
+
+$$v_0 = 0$$
+
+$$v_{t+1} = \gamma v_{t} + \nabla \mathcal{l}(\theta_t)$$
+
+$$\theta_{t+1} = \theta_{t} - \eta_t( \gamma v_{t+1} + \nabla \mathcal{l}(\theta_{t})$$
+
+#### RMSProp
+
+$$v_0 = 1 \text{,} m_0 = 0$$
+
+$$v_{t+1} = \rho v_{t} + (1 - \rho) \nabla \mathcal{l}(\theta_t)^2$$
+
+$$m_{t+1} = \gamma m_{t} + \frac{\eta_t}{\sqrt{v_{t+1} + \epsilon}}\nabla \mathcal{l}(\theta_t)$$
+
+$$\theta_{t+1} = \theta_{t} - m_{t+1}$$
+
+#### ADAM
+
+$$m_0 = 0 \text{,} v_0 = 0$$
+
+$$m_{t+1} = \beta_1 m_{t} + (1 - \beta_1) \nabla \mathcal{l} (\theta_t)$$
+
+$$v_{t+1} = \beta_2 v_{t} + (1 - \beta_2) \nabla \mathcal{l}(\theta_t)^2$$
+
+$$b_{t+1} = \frac{\sqrt{1 - \beta_2^{t+1}}}{1 - \beta_1^{t+1}}$$
+
+$$\theta_{t+1} = \theta_{t} - \alpha_t \frac{m_{t+1}}{\sqrt{v_{t+1}} + \epsilon} b_{t+1}$$
+
+#### NADAM
+
+$$m_0 = 0 \text{,} v_0 = 0$$
+
+$$m_{t+1} = \beta_1 m_{t} + (1 - \beta_1) \nabla \mathcal{l} (\theta_t)$$
+
+$$v_{t+1} = \beta_2 v_{t} + (1 - \beta_2) \nabla \mathcal{l} (\theta_t)^2$$
+
+$$b_{t+1} = \frac{\sqrt{1 - \beta_2^{t+1}}}{1 - \beta_1^{t+1}}$$
+
+$$\theta_{t+1} = \theta_{t} - \alpha_t \frac{\beta_1 m_{t+1} + (1 - \beta_1) \nabla \mathcal{l} (\theta_t)}{\sqrt{v_{t+1}} + \epsilon} b_{t+1}$$
+
+</details>
+
+## 致谢
+
+-   我们要感谢Max Bileschi, Roy Frostig, Zelda Mariet, Stan
+    Bileschi, Mohammad Norouzi, Chris DuBois以及Charles Sutton 阅读本手稿并提出宝贵的意见来改进我们的内容。
+-   我们复用了最初由Naman Agarwal为其他联合研究制作的几个分析图的一些实验数据。
+-   我们要感谢Will Chen对文档演讲内容提出的宝贵建议。
+-   我们还要感谢 Rohan Anil 与我们进行了有益的讨论。
+
+## 引用
+
+```
+@misc{tuningplaybookgithub,
+  author = {Varun Godbole and George E. Dahl and Justin Gilmer and Christopher J. Shallue and Zachary Nado},
+  title = {Deep Learning Tuning Playbook},
+  url = {http://github.com/google/tuning_playbook},
+  year = {2023},
+  note = {Version 1.0}
+}
+```
+
+### 贡献者许可协议
+
+对该项目的贡献必须附有贡献者许可协议 (CLA)。 对于你（或你的雇主）所贡献的内容将保留其相关版权； 这只是允许我们使用和重新分配您的贡献作为项目的一部分。 请前往 <https://cla.developers.google.com/> 查看您当前存档的协议或签署新协议。
+
+通常，您只需要签署一次CLA协议即可。因此，如果您已经签署过一次（即使针对的是其他项目），那么您可能无需再次签署。
+
+## 关于贡献
+
+-   这并不是一款由谷歌官方所支持的产品。
+
+-   我们欢迎听到来自您的反馈。
+
+    -   如果你喜欢这本手册, 请给我们 [留一颗小星星](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars#starring-a-repository)！或者，可以给我们的邮箱
+        deep-learning-tuning-playbook \[at\] googlegroups.com发送邮件。 这些推荐有帮于证明我们创建更多这样的内容是合理的。
+    -   如果有任何不正确的地方，欢迎在GitHub的讨论区提出相关问题。对于不适合问题的问题或其他消息，请在 GitHub 上打开一个新的讨论主题。
+
+-   正如在序言中所讨论的，这是一份在线文档。我们会定期进行大大小小的修改。如果你想获取相关通知，请关注我们的仓库 (具体配置请查看 [操作指南](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository)).
+
+-   请不要在未通过问题跟踪系统与作者协调的情况下提交pull request。
+
+### 代码审核
+
+所有的提交（包括来自项目成员的提交）都需要进行审核。出于这个目的，我们会使用Github提供的pull request功能来进行代码审核。 关于如何使用pull request，请查看
+[GitHub Help](https://help.github.com/articles/about-pull-requests/) 获取更多信息.
+
+### 社区指南
+
+本项目遵循
+[谷歌开源社区指南](https://opensource.google/conduct/).
 
