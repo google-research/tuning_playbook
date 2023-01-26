@@ -540,6 +540,68 @@
 + 具有跨主机相同的 RNG 种子（用于模型初始化）和跨主机不同的种子（用于数据打乱/预处理）至关重要，因此请确保合适地标记它们
 + 通常建议跨主机分片数据文件以提高性能
 
+### 所有流行的优化算法的更新规则是什么？
+
+<details><summary><em>[点击展开]</em></summary>
+
+<br>
+
+#### Stochastic gradient descent (SGD)
+
+$$\theta_{t+1} = \theta_{t} - \eta_t \nabla \mathcal{l}(\theta_t)$$
+
+#### Momentum
+
+$$v_0 = 0$$
+
+$$v_{t+1} = \gamma v_{t} + \nabla \mathcal{l}(\theta_t)$$
+
+$$\theta_{t+1} = \theta_{t} - \eta_t v_{t+1}$$
+
+#### Nesterov
+
+$$v_0 = 0$$
+
+$$v_{t+1} = \gamma v_{t} + \nabla \mathcal{l}(\theta_t)$$
+
+$$\theta_{t+1} = \theta_{t} - \eta_t( \gamma v_{t+1} + \nabla \mathcal{l}(\theta_{t})$$
+
+#### RMSProp
+
+$$v_0 = 1 \text{,} m_0 = 0$$
+
+$$v_{t+1} = \rho v_{t} + (1 - \rho) \nabla \mathcal{l}(\theta_t)^2$$
+
+$$m_{t+1} = \gamma m_{t} + \frac{\eta_t}{\sqrt{v_{t+1} + \epsilon}}\nabla \mathcal{l}(\theta_t)$$
+
+$$\theta_{t+1} = \theta_{t} - m_{t+1}$$
+
+#### ADAM
+
+$$m_0 = 0 \text{,} v_0 = 0$$
+
+$$m_{t+1} = \beta_1 m_{t} + (1 - \beta_1) \nabla \mathcal{l} (\theta_t)$$
+
+$$v_{t+1} = \beta_2 v_{t} + (1 - \beta_2) \nabla \mathcal{l}(\theta_t)^2$$
+
+$$b_{t+1} = \frac{\sqrt{1 - \beta_2^{t+1}}}{1 - \beta_1^{t+1}}$$
+
+$$\theta_{t+1} = \theta_{t} - \alpha_t \frac{m_{t+1}}{\sqrt{v_{t+1}} + \epsilon} b_{t+1}$$
+
+#### NADAM
+
+$$m_0 = 0 \text{,} v_0 = 0$$
+
+$$m_{t+1} = \beta_1 m_{t} + (1 - \beta_1) \nabla \mathcal{l} (\theta_t)$$
+
+$$v_{t+1} = \beta_2 v_{t} + (1 - \beta_2) \nabla \mathcal{l} (\theta_t)^2$$
+
+$$b_{t+1} = \frac{\sqrt{1 - \beta_2^{t+1}}}{1 - \beta_1^{t+1}}$$
+
+$$\theta_{t+1} = \theta_{t} - \alpha_t \frac{\beta_1 m_{t+1} + (1 - \beta_1) \nabla \mathcal{l} (\theta_t)}{\sqrt{v_{t+1}} + \epsilon} b_{t+1}$$
+
+</details>
+
 ## 致谢
 
 -   我们要感谢Max Bileschi, Roy Frostig, Zelda Mariet, Stan
