@@ -540,6 +540,34 @@
 + 具有跨主机相同的 RNG 种子（用于模型初始化）和跨主机不同的种子（用于数据打乱/预处理）至关重要，因此请确保合适地标记它们
 + 通常建议跨主机分片数据文件以提高性能
 
+## Acknowledgments
+
+-   We owe a debt of gratitude to Max Bileschi, Roy Frostig, Zelda Mariet, Stan
+    Bileschi, Mohammad Norouzi, Chris DuBois and Charles Sutton for reading the
+    manuscript and providing valuable feedback.
+-   We reused some experimental data for several plots that were originally
+    produced by Naman Agarwal for other joint research.
+-   We would like to thank Will Chen for invaluable advice on the presentation of the document.
+-   We would also like to thank Rohan Anil for useful discussions.
+
+## 引用
+
+```
+@misc{tuningplaybookgithub,
+  author = {Varun Godbole and George E. Dahl and Justin Gilmer and Christopher J. Shallue and Zachary Nado},
+  title = {Deep Learning Tuning Playbook},
+  url = {http://github.com/google/tuning_playbook},
+  year = {2023},
+  note = {Version 1.0}
+}
+```
+
+### 贡献者许可协议
+
+对该项目的贡献必须附有贡献者许可协议 (CLA)。 对于你（或你的雇主）所贡献的内容将保留其相关版权； 这只是允许我们使用和重新分配您的贡献作为项目的一部分。 请前往 <https://cla.developers.google.com/> 查看您当前存档的协议或签署新协议。
+
+通常，您只需要签署一次CLA协议即可。因此，如果您已经签署过一次（即使针对的是其他项目），那么您可能无需再次签署。
+
 ## 关于贡献
 
 -   这并不是一款由谷歌官方所支持的产品。
@@ -553,12 +581,6 @@
 -   正如在序言中所讨论的，这是一份在线文档。我们会定期进行大大小小的修改。如果你想获取相关通知，请关注我们的仓库 (具体配置请查看 [操作指南](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository)).
 
 -   请不要在未通过问题跟踪系统与作者协调的情况下提交pull request。
-
-### 贡献者许可协议
-
-对该项目的贡献必须附有贡献者许可协议 (CLA)。 对于你（或你的雇主）所贡献的内容将保留其相关版权； 这只是允许我们使用和重新分配您的贡献作为项目的一部分。 请前往 <https://cla.developers.google.com/> 查看您当前存档的协议或签署新协议。
-
-通常，您只需要签署一次CLA协议即可。因此，如果您已经签署过一次（即使针对的是其他项目），那么您可能无需再次签署。
 
 ### 代码审核
 
