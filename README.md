@@ -540,6 +540,20 @@
 + 具有跨主机相同的 RNG 种子（用于模型初始化）和跨主机不同的种子（用于数据打乱/预处理）至关重要，因此请确保合适地标记它们
 + 通常建议跨主机分片数据文件以提高性能
 
+## 关于贡献
+
+-   这并不是一款由谷歌官方所支持的产品。
+
+-   我们欢迎听到来自您的反馈。
+
+    -   如果你喜欢这本手册, 请给我们 [留一颗小星星](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars#starring-a-repository)！或者，可以给我们的邮箱
+        deep-learning-tuning-playbook \[at\] googlegroups.com发送邮件。 这些推荐有帮于证明我们创建更多这样的内容是合理的。
+    -   如果有任何不正确的地方，欢迎在GitHub的讨论区提出相关问题。对于不适合问题的问题或其他消息，请在 GitHub 上打开一个新的讨论主题。
+
+-   正如在序言中所讨论的，这是一份在线文档。我们会定期进行大大小小的修改。如果你想获取相关通知，请关注我们的仓库 (具体配置请查看 [操作指南](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository)).
+
+-   请不要在未通过问题跟踪系统与作者协调的情况下提交pull request。
+
 ### 贡献者许可协议
 
 对该项目的贡献必须附有贡献者许可协议 (CLA)。 对于你（或你的雇主）所贡献的内容将保留其相关版权； 这只是允许我们使用和重新分配您的贡献作为项目的一部分。 请前往 <https://cla.developers.google.com/> 查看您当前存档的协议或签署新协议。
