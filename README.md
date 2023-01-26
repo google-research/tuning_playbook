@@ -13,7 +13,7 @@
 - [开始新项目的指南](#开始新项目的指南)
   - [选择模型架构](#选择模型架构)
   - [选择优化器](#选择优化器)
-  - [选择Batch Size](#选择Batch Size)
+  - [选择BatchSize](#选择BatchSize)
   - [选择初始配置](#选择初始配置)
 - [提高模型性能的科学方法](#提高模型性能的科学方法)
 
@@ -74,7 +74,7 @@
     -   [Adam and NAdam](#what-are-the-update-rules-for-all-the-popular-optimization-algorithms)，它们比具有动量的 SGD 更通用。请注意，Adam 有 4 个可调超参数，[他们都很重要](https://arxiv.org/abs/1910.05446)！
         -   参见 [Adam 的超参数应该如何调整？](#Adam 的超参数应该如何调整？)
 
-### 选择Batch Size
+### 选择BatchSize
 
 ***总结：*** *Batch Size决定训练速度，并且不应该被直接用于调整验证集性能。通常来说，可用硬件支持的最大Batch Size是较为理想的数值。*
 
