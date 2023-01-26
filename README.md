@@ -734,6 +734,90 @@
 
 ## 常见问题的回答
 
+#### 学习率预热
+
+<p align="center">
+<img src="assets/instability_during_warmup.png" width="80%" alt="An example of instability during a warmup period (note the horizontal axis log
+scale).">
+</p>
+
+<p align="center"><b>Figure 6:</b> 预热期间不稳定的示例（注意横轴的刻度是以对数的形式展示）。 在这种情况下，成功训练需要4万次的热身。</p>
+
+
+##### 何时对学习率进行预热
+
+<p align="center">
+<img src="assets/axis_model_with_instability.png" width="49%" alt="Axis plot for model with instability">
+</p>
+
+<p align="center"><b>Figure 7a:</b> 表现出训练不稳定性的模型的超参数轴图示例。 最佳学习率处于可行的边缘。 “不可行”试验被定义为产生 NaN 或异常高的损失值的试验。</p>
+
+<p align="center">
+<img src="assets/loss_model_with_instability.png" width="49%" alt="Loss curve for model with instability">
+</p>
+
+<p align="center"><b>Figure 7b:</b> 模型训练损失中不稳定的学习率</p>
+
+-   Figure 7a 展示的是一个超参数轴图，该图表明模型正在经历优化不稳定性，因为最佳学习率恰好位于不稳定的边缘。
+-   Figure 7b展示了以5-10倍的峰值学习率来训练模型中产生的训练损失是如何通过双重检查的。如果该图展示的训练损失在稳步下降后突然上升（例如，如图中10000步处展示的那样），
+    那么该模型可能存在着优化不稳定性的情况。
+- 
+##### 如何对学习率进行预热
+
+<p align="center">
+<img src="assets/beneficial_effect_warmup.png" width="80%" alt="Beneficial effect of warmup on training instabilities">
+</p>
+
+<p align="center"><b>Figure 8:</b> 学习率预热对解决训练不稳定性的有益影响</p>
+
+-   在上面的内容中，我们假设从业者已经确定了让模型变得不稳定的学习率。也就是 `unstable_base_learning_rate`。
+-   预热的过程涉及了预先安排一个学习率计划，这个计划会将学习率从0提升到某个稳定的 `base_learning_rate`，这至少比 `unstable_base_learning_rate`要大一个数量级。
+    默认设置是尝试使用 `unstable_base_learning_rate` 10倍大小的 `base_learning_rate`。值得注意的是，对于使用例如100倍
+    `unstable_base_learning_rate`这样的数值，那么可能需要重新运行整个过程。具体安排如下：
+    -   在`warmup_steps`的过程中，将数值从0提升到 `base_learning_rate`。
+    -   `post_warmup_steps`的过程中，以一个恒定的速率进行训练。
+-   我们的目标是找到最短的 `warmup_steps`，以此来让我们获得远高于`unstable_base_learning_rate`的峰值学习率。
+-   因此，对于，每个 `base_learning_rate`来说， 我们需要对 `warmup_steps` 以及
+    `post_warmup_steps`进行调优。 通常将 `post_warmup_steps` 设定为
+    `warmup_steps的两倍`就可以了。
+-   预热可以独立于现有的衰减计划进行调整。
+    `warmup_steps` 应该以几个不同的数量级进行扫描。例如，在样本学习中可以以[10, 10<sup>3</sup>, 10<sup>4</sup>,
+    10<sup>5</sup>]这样的数量级进行尝试。. 最大的可行点不应超过`max_train_steps`的10%。
+-   一旦建立了不会破坏以 `base_learning_rate` 进行训练的`warmup_steps`，就应该将其应用于基准模型。
+    本质上，我们将这个安排添加到现有安排上，并使用上面讨论中选择的最佳检查点来将这个实验与基准进行比较。例如，如果我们一开始的`max_train_steps`的值是10000，
+    并进行了1000次`warmup_steps`。那么，新的训练过程总共应当进行了11000次。
+-   如果稳定训练需要较长的`warmup_steps`（大于`max_train_steps`的5%），则可能需要增加`max_train_steps`来解决这个问题。
+-   在整个工作量的范围中并不存在真正意义上的`标准`值。有些模型可能只需要100次训练，然而有些模型则可能需要4万次以上的训练，尤其是Transformer类。
+
+#### 梯度裁剪
+
+<p align="center">
+<img src="assets/gradient_clipping.png" width="80%" alt="Gradient clipping on early training instabilities">
+</p>
+
+<p align="center"><b>Figure 9:</b> 梯度裁剪纠正早期训练不稳定性的图示。</p>
+
+-   当出现较大或离群的梯度问题时，梯度裁剪会变得非常有用。
+-   裁剪可以修复早期训练中出现的不稳定性（早期的大梯度范数），或中期训练中出现的不稳定性（训练中期突然出现的梯度尖峰）。
+-   有时，较长的预热时间可以纠正梯度裁剪无法纠正的不稳定性: 请查看[之前的章节](#How-to-apply-learning-rate-warmup)。
+    -   🤖 在预热的时候，进行梯度裁剪会发生什么？
+-   理想的裁剪阈值要刚好高于“典型的”梯度范数。
+-   下面是一个关于如何进行梯度裁剪的案例：
+    -   如果梯度范数 $\left | g \right |$ 大于梯度裁剪的阈值
+        gradient clipping threshold $\lambda$，那么就需要进行 ${g}'= \lambda \times \frac{g}{\left | g \right |}$。此处的 ${g}'$是新的梯度。
+-   在训练期间记录下未剪切的梯度范数。 默认情况下会生成:
+    -   梯度范数与步骤数量的关系图
+    -   聚合所有步骤的梯度范数直方图
+-   根据梯度范数的第90百分位数选择梯度裁剪阈值。
+    -   这个阈值的大小与工作量有关。但90%是一个很好的选择。但如果这个奏效，那么可以对其进行调优。
+    -   🤖 那么，某种适应性策略会怎么样呢?
+-   如果我们尝试梯度裁剪并且不稳定问题仍然存在，那么我们可以更努力地尝试（例如，阈值更小）。
+-   极端激进的梯度裁剪本质上是一种降低学习率的奇怪方式。 如果我们发现自己使用了非常激进的裁剪，那么我们可能应该只降低学习率。
+-   我们通常会认为以某种方式将超过 50% 的更新剪裁为“极其激进”。
+-   如果我们需要进行极其激进的梯度裁剪来处理我们的不稳定问题，那么我们不妨降低学习率。
+
+</details>
+
 ### 为什么将学习率和其他优化参数称为超参数？ 它们不是任何先验分布的参数。
 
 <details><summary><em>[点击展开]</em></summary>
