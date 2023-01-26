@@ -540,6 +540,13 @@
 + 具有跨主机相同的 RNG 种子（用于模型初始化）和跨主机不同的种子（用于数据打乱/预处理）至关重要，因此请确保合适地标记它们
 + 通常建议跨主机分片数据文件以提高性能
 
+### 代码审核
 
+所有的提交（包括来自项目成员的提交）都需要进行审核。出于这个目的，我们会使用Github提供的pull request功能来进行代码审核。 关于如何使用pull request，请查看
+[GitHub Help](https://help.github.com/articles/about-pull-requests/) 获取更多信息.
 
+### 社区指南
+
+本项目遵循
+[谷歌开源社区指南](https://opensource.google/conduct/).
 
