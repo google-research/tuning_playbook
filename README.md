@@ -550,7 +550,7 @@
 -   受batch size影响最强烈的那些超参数，即优化器超参数（例如：学习率、动量）和正则化超参数，这些东西对于每个batch size进行单独调优的时候是最重要的。
     - 由于样本方差的原因，较小的batch size会在训练算法中引入更多的不确定性，并且这些不确定性可能存在着正则化效果。因此，较大的batch size可能更容易过度拟合。并且，这可能需要更强的正则化和/或额外的正则化技术。
 - 此外， 当修改batch size的大小时，[训练步骤的数量可能也需要进行调整](#choosing-the-batch-size-to-minimize-training-time) when changing the batch size.
--   一旦考虑了所有这些因素带来的影响，目前还没有任何能够令人信服的证据表明batch size会影响最大可实现的验证性能。
+-   一旦考虑了所有这些因素带来的影响，目前还没有任何能够令人信服的证据表明batch size会影响最大可实现的验证性能（具体请阅读 [Shallue et al. 2018](https://arxiv.org/abs/1811.03600)）。
 </details>
 
 ### 所有流行的优化算法的更新规则是什么？
