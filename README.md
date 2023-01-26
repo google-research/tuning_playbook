@@ -540,15 +540,13 @@
 + 具有跨主机相同的 RNG 种子（用于模型初始化）和跨主机不同的种子（用于数据打乱/预处理）至关重要，因此请确保合适地标记它们
 + 通常建议跨主机分片数据文件以提高性能
 
-## Acknowledgments
+## 致谢
 
--   We owe a debt of gratitude to Max Bileschi, Roy Frostig, Zelda Mariet, Stan
-    Bileschi, Mohammad Norouzi, Chris DuBois and Charles Sutton for reading the
-    manuscript and providing valuable feedback.
--   We reused some experimental data for several plots that were originally
-    produced by Naman Agarwal for other joint research.
--   We would like to thank Will Chen for invaluable advice on the presentation of the document.
--   We would also like to thank Rohan Anil for useful discussions.
+-   我们要感谢Max Bileschi, Roy Frostig, Zelda Mariet, Stan
+    Bileschi, Mohammad Norouzi, Chris DuBois以及Charles Sutton 阅读本手稿并提出宝贵的意见来改进我们的内容。
+-   我们复用了最初由Naman Agarwal为其他联合研究制作的几个分析图的一些实验数据。
+-   我们要感谢Will Chen对文档演讲内容提出的宝贵建议。
+-   我们还要感谢 Rohan Anil 与我们进行了有益的讨论。
 
 ## 引用
 
