@@ -865,7 +865,7 @@ Batch norm 很复杂，一般来说，应该使用与计算梯度不同的 batch
 
 </details>
 
-### 如何调试和环节优化失败
+### 如何诊断和纠正训练失败
 
 <details><summary><em>[点击展开]</em></summary>
 <br>
