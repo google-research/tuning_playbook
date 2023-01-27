@@ -757,6 +757,24 @@ Batch norm 很复杂，一般来说，应该使用与计算梯度不同的 batch
 
 ## 常见问题的回答
 
+### 需要多少次试验才能通过准随机搜索获得较好的结果？
+
+<details><summary><em>[点击展开]</em></summary>
+<br>
+
+<p align="center">
+<img src="assets/have_we_sampled_enough.png" width="49%" alt="A box plot showing the importance of sampling enough">
+</p>
+
+<p align="center"><b>Figure 3:</b> ResNet-50 在 ImageNet 上进行了 100 次试验调整。 通过自举，模拟了不同数量的调整预算。 上面绘制了每个试验预算的最佳性能的箱线图。
+
+-   这个问题没有办法笼统地回答，但是我们可以看具体的例子。
+-   正如Figure 3所示那样, 研究中的试验次数会对结果产生重大影响。
+    -   请注意，当对6个试验进行抽样时，与对20个试验进行抽样时的四分位间距有多大。
+    -   即使进行了20次试验，运气特别好和运气特别差的研究之间的差异也可能大于使用固定超参数在不同随机种子上重新训练该模型之间的典型差异，对于此工作量可能约为 +/- 0.1% 的验证错误率约为 23%。
+
+</details>
+
 ### 如何调试和环节优化失败
 
 <details><summary><em>[点击展开]</em></summary>
