@@ -757,6 +757,21 @@ Batch norm 很复杂，一般来说，应该使用与计算梯度不同的 batch
 
 ## 常见问题的回答
 
+### 在哪里可以找到准随机搜索的实现？
+
+<details><summary><em>[点击展开]</em></summary>
+<br>
+
+-   我们可以使用
+    [这个实现](https://github.com/mlcommons/algorithmic-efficiency/blob/main/algorithmic_efficiency/halton.py)。
+    它能够在给定搜索空间内生成（旨在按照
+    https://arxiv.org/abs/1706.03200中建议来实现移位的、加扰的 Halton 序列）。
+-   如果基于低差异序列的准随机搜索算法不可用，则可以换成伪随机均匀搜索，虽然这可能效率稍低。
+    -   在 1-2 维中，网格搜索也是可以接受的，尽管在更高的维度中不行（详见
+        [Bergstra & Bengio, 2012](https://www.jmlr.org/papers/v13/bergstra12a.html)）。
+
+</details>
+
 ### 需要多少次试验才能通过准随机搜索获得较好的结果？
 
 <details><summary><em>[点击展开]</em></summary>
