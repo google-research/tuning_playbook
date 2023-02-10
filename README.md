@@ -1128,12 +1128,16 @@ should be tuned at all.*
     [the advantages of quasi-random search](#why-use-quasi-random-search-instead-of-more-sophisticated-black-box-optimization-algorithms-during-the-exploration-phase-of-tuning)
     no longer apply and Bayesian optimization tools should be used to
     automatically find the best hyperparameter configuration.
+    -   [Open-Source Vizier](https://github.com/google/vizier) implements
+        a variety of sophisticated algorithms for tuning ML models, including
+        Bayesian Optimization algorithms.
     -   If the search space contains a non-trivial volume of divergent points
         (points that get NaN training loss or even training loss many standard
         deviations worse than the mean), it is important to use black box
         optimization tools that properly handle trials that diverge (see
         [Bayesian Optimization with Unknown Constraints](https://arxiv.org/abs/1403.5607)
-        for an excellent way to deal with this issue).
+        for an excellent way to deal with this issue). [Open-Source Vizier](https://github.com/google/vizier)
+        has support for divergent points by marking trials as infeasible.
 -   At this point, we should also consider checking the performance on the test
     set.
     -   In principle, we could even fold the validation set into the training
@@ -1750,9 +1754,11 @@ multi-host training can make it very easy to introduce bugs!*
 <details><summary><em>[Click to expand]</em></summary>
 <br>
 
--   We use
-    [this implementation](https://github.com/mlcommons/algorithmic-efficiency/blob/main/algorithmic_efficiency/halton.py)
-    that generates a Halton sequence for a given search space (intended to
+-   [Open-Source Vizier](https://github.com/google/vizier) has an [implementation
+    of quasi-ranom search](https://github.com/google/vizier/blob/main/vizier/_src/algorithms/designers/quasi_random.py). Set `algorithm="QUASI_RANDOM_SEARCH"` in [this usage example](https://oss-vizier.readthedocs.io/en/latest/guides/user/running_vizier.html).
+-   An alternative implementation exists
+    [here](https://github.com/mlcommons/algorithmic-efficiency/blob/main/algorithmic_efficiency/halton.py).
+-   Both implementations above generate a Halton sequence for a given search space (intended to
     implement a shifted, scrambled Halton sequence as recommended in
     https://arxiv.org/abs/1706.03200).
 -   If a quasi-random search algorithm based on a low-discrepancy sequence is
