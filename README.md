@@ -1137,7 +1137,7 @@ should be tuned at all.*
         optimization tools that properly handle trials that diverge (see
         [Bayesian Optimization with Unknown Constraints](https://arxiv.org/abs/1403.5607)
         for an excellent way to deal with this issue). [Open-Source Vizier](https://github.com/google/vizier)
-        has support for divergent points by marking trials as infeasible.
+        has support for divergent points by marking trials as infeasible, although it may not use our preferred approach from [Gelbart et al.](https://arxiv.org/abs/1403.5607), depending on how it is configured.
 -   At this point, we should also consider checking the performance on the test
     set.
     -   In principle, we could even fold the validation set into the training
