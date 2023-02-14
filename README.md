@@ -2050,7 +2050,7 @@ $$v_0 = 0$$
 
 $$v_{t+1} = \gamma v_{t} + \nabla \mathcal{l}(\theta_t)$$
 
-$$\theta_{t+1} = \theta_{t} - \eta_t( \gamma v_{t+1} + \nabla \mathcal{l}(\theta_{t})$$
+$$\theta_{t+1} = \theta_{t} - \eta_t( \gamma v_{t+1} + \nabla \mathcal{l}(\theta_{t}))$$
 
 #### RMSProp
 
@@ -2104,7 +2104,7 @@ $$\theta_{t+1} = \theta_{t} - \alpha_t \frac{\beta_1 m_{t+1} + (1 - \beta_1) \na
 @misc{tuningplaybookgithub,
   author = {Varun Godbole and George E. Dahl and Justin Gilmer and Christopher J. Shallue and Zachary Nado},
   title = {Deep Learning Tuning Playbook},
-  url = {http://github.com/google/tuning_playbook},
+  url = {http://github.com/google-research/tuning_playbook},
   year = {2023},
   note = {Version 1.0}
 }
