@@ -529,7 +529,7 @@ towards the goal.*
         preprocessing choice, etc.).
     -   Understand the impact of a particular model hyperparameter (e.g. the
         activation function)
-    -   Greedily maximize validation error.
+    -   Greedily minimize validation error.
 
 ### Designing the next round of experiments
 
