@@ -14,7 +14,7 @@
 -   [Who is this document for?](#who-is-this-document-for)
 -   [Why a tuning playbook?](#why-a-tuning-playbook)
 -   [Guide for starting a new project](#guide-for-starting-a-new-project)
-    -   [Choosing the model architecture](#choosing-a-model-architecture)
+    -   [Choosing the model architecture](#choosing-the-model-architecture)
     -   [Choosing the optimizer](#choosing-the-optimizer)
     -   [Choosing the batch size](#choosing-the-batch-size)
     -   [Choosing the initial configuration](#choosing-the-initial-configuration)
