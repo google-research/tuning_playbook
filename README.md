@@ -2050,7 +2050,7 @@ $$v_0 = 0$$
 
 $$v_{t+1} = \gamma v_{t} + \nabla \mathcal{l}(\theta_t)$$
 
-$$\theta_{t+1} = \theta_{t} - \eta_t( \gamma v_{t+1} + \nabla \mathcal{l}(\theta_{t})$$
+$$\theta_{t+1} = \theta_{t} - \eta_t( \gamma v_{t+1} + \nabla \mathcal{l}(\theta_{t}))$$
 
 #### RMSProp
 
