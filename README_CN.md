@@ -1,5 +1,4 @@
-# 《深度学习调参指南》中文翻译
-> 「大量的实践经验已被提炼成这份强大的深度学习模型调参指南。」——Geoffrey Hinton
+# Deep Learning Tuning Playbook
 
 *This is not an officially supported Google product.*
 
