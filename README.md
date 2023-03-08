@@ -528,7 +528,7 @@ towards the goal.*
     -   Try a potential improvement to the pipeline (e.g. a new regularizer,
         preprocessing choice, etc.).
     -   Understand the impact of a particular model hyperparameter (e.g. the
-        activation function)
+        activation function).
     -   Greedily maximize validation error.
 
 ### Designing the next round of experiments
