@@ -859,8 +859,7 @@ if issues are discovered, revise the experiments and rerun them.*
         value it achieved over the course of training.
 
 <p align="center" id="figure-1">
-<img src="assets/bad_search_space.png" width="49%" alt="Example of bad search space boundaries">
-<img src="assets/good_search_space.png" width="49%" alt="Example of good search space boundaries">
+<img src="assets/good_and_bad_search_spaces.png" width="98%" alt="Example of good search space boundaries">
 </p>
 
 <p align="center"><b>Figure 1:</b> Examples of bad search space boundaries and acceptable search space boundaries.</p>
