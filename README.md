@@ -1011,7 +1011,7 @@ trained on ImageNet.">
     scientific hyperparameter.
     -   For example, we may want to determine the value of weight decay that
         results in the best validation error.
--   An **isolation plot** is a special case of the basic hyper-parameter axis
+-   An **isolation plot** is a special case of the basic hyperparameter axis
     plot. Each point on an isolation plot corresponds to the performance of the
     *best* trial across some (or all) of the nuisance hyperparameters.
     -   In other words, we plot the model performance after "optimizing away"
