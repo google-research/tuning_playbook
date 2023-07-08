@@ -1459,7 +1459,7 @@ evaluations at regular step intervals, not regular time intervals.*
     shuffled. Evaluating at regular step intervals can make these issues easier
     to catch.
 -   Partial batches can occur when the evaluation sets are not divisible by the
-    batch size. Ensure that the padded examples are correctly weighed to prevent
+    batch size. Ensure that the padded examples are correctly weighted to prevent
     the loss function from being biased by them. Often, these padded examples
     can be given a weight of zero.
 -   Save sufficient information per evaluation to support offline analysis.
