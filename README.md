@@ -1619,7 +1619,7 @@ multi-host training can make it very easy to introduce bugs!*
 
 -   It’s not uncommon to see papers with complicated piecewise learning rate
     (LR) decay schedules.
--   Readers often wonder how the authors arrived at such a complicated study.
+-   Readers often wonder how the authors arrived at such a complicated schedule.
 -   Many complicated LR decay schedules are the result of tuning the schedule as
     a function of the validation set performance in an ad hoc way:
     1.  Start a single training run with some simple LR decay (or a constant
