@@ -529,7 +529,7 @@ towards the goal.*
         preprocessing choice, etc.).
     -   Understand the impact of a particular model hyperparameter (e.g. the
         activation function)
-    -   Greedily maximize validation error.
+    -   Greedily minimize validation error.
 
 ### Designing the next round of experiments
 
@@ -1010,7 +1010,7 @@ trained on ImageNet.">
     scientific hyperparameter.
     -   For example, we may want to determine the value of weight decay that
         results in the best validation error.
--   An **isolation plot** is a special case of the basic hyper-parameter axis
+-   An **isolation plot** is a special case of the basic hyperparameter axis
     plot. Each point on an isolation plot corresponds to the performance of the
     *best* trial across some (or all) of the nuisance hyperparameters.
     -   In other words, we plot the model performance after "optimizing away"
@@ -1458,7 +1458,7 @@ evaluations at regular step intervals, not regular time intervals.*
     shuffled. Evaluating at regular step intervals can make these issues easier
     to catch.
 -   Partial batches can occur when the evaluation sets are not divisible by the
-    batch size. Ensure that the padded examples are correctly weighed to prevent
+    batch size. Ensure that the padded examples are correctly weighted to prevent
     the loss function from being biased by them. Often, these padded examples
     can be given a weight of zero.
 -   Save sufficient information per evaluation to support offline analysis.
@@ -1618,7 +1618,7 @@ multi-host training can make it very easy to introduce bugs!*
 
 -   It’s not uncommon to see papers with complicated piecewise learning rate
     (LR) decay schedules.
--   Readers often wonder how the authors arrived at such a complicated study.
+-   Readers often wonder how the authors arrived at such a complicated schedule.
 -   Many complicated LR decay schedules are the result of tuning the schedule as
     a function of the validation set performance in an ad hoc way:
     1.  Start a single training run with some simple LR decay (or a constant
@@ -2103,7 +2103,7 @@ $$\theta_{t+1} = \theta_{t} - \alpha_t \frac{\beta_1 m_{t+1} + (1 - \beta_1) \na
 @misc{tuningplaybookgithub,
   author = {Varun Godbole and George E. Dahl and Justin Gilmer and Christopher J. Shallue and Zachary Nado},
   title = {Deep Learning Tuning Playbook},
-  url = {http://github.com/google/tuning_playbook},
+  url = {http://github.com/google-research/tuning_playbook},
   year = {2023},
   note = {Version 1.0}
 }
