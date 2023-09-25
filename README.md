@@ -80,16 +80,16 @@ practical details that can be so critical for obtaining good results.
 
 We are a team of five researchers and engineers who have worked in deep learning
 for many years, some of us since as early as 2006. We have applied deep learning
-to problems in everything from speech recognition to astronomy, and learned a
+to problems in everything from speech recognition to astronomy and learned a
 lot along the way. This document grew out of our own experience training neural
 networks, teaching new machine learning engineers, and advising our colleagues
 on the practice of deep learning. Although it has been gratifying to see deep
 learning go from a machine learning approach practiced by a handful of academic
-labs to a technology powering products used by billions of people, deep learning
+labs to a technology powering product used by billions of people, deep learning
 is still in its infancy as an engineering discipline and we hope this document
 encourages others to help systematize the field's experimental protocols.
 
-This document came about as we tried to crystalize our own approach to deep
+This document came about as we tried to crystallize our own approach to deep
 learning and thus it represents the opinions of the authors at the time of
 writing, not any sort of objective truth. Our own struggles with hyperparameter
 tuning made it a particular focus of our guidance, but we also cover other
@@ -474,7 +474,7 @@ improvement is based on strong evidence to avoid adding unnecessary complexity.*
 At a high level, our incremental tuning strategy involves repeating the
 following four steps:
 
-1.  Identify an appropriately-scoped goal for the next round of experiments.
+1.  Identify an appropriately scoped goal for the next round of experiments.
 2.  Design and run a set of experiments that makes progress towards this goal.
 3.  Learn what we can from the results.
 4.  Consider whether to launch the new best configuration.
@@ -827,7 +827,7 @@ if issues are discovered, revise the experiments and rerun them.*
         because they violate some implicit constraint)?
         -   When a very large fraction of points in a study are **infeasible**
             we should try to adjust the search space to avoid sampling such
-            points, which sometimes requires reparameterizing the search space.
+            points, which sometimes requires reparametrizing  the search space.
         -   In some cases, a large number of infeasible points can indicate a
             bug in the training code.
     -   [Does the model exhibit optimization issues?](#how-can-optimization-failures-be-debugged-and-mitigated)
@@ -1166,7 +1166,7 @@ should be tuned at all.*
     even causes problematic overfitting).
     -   In this case, we should expect to be able to train to very low training
         loss, to the point where training longer might slightly reduce the
-        training loss, but will not meaningfully reduce the validation loss.
+        training loss but will not meaningfully reduce the validation loss.
     -   Particularly when training is not compute-bound, a more generous
         training time budget can make tuning easier, especially when tuning
         learning rate decay schedules, since they have a particularly strong
@@ -1380,7 +1380,7 @@ task-dependent; use a profiler and look out for common issues.*
     task-dependent. Broader engineering considerations (e.g. minimizing disk
     footprint) may warrant worse input pipeline performance.
 -   Common causes:
-    -   Data are not colocated with the training process, causing I/O latency
+    -   Data is not collocated with the training process, causing I/O latency
         (this might happen when reading training data over a network).
     -   Expensive online data preprocessing (consider doing this once offline
         and saving).
@@ -1556,7 +1556,7 @@ number of hosts.*
     current batch, but in the multi-device setting these statistics are
     different on each device unless explicitly synchronized.
 -   Anecdotal reports (mostly on ImageNet) say calculating these normalizing
-    statistics using only ~64 examples actually works better in practice (see
+    statistics using only ~64 examples actually work better in practice (see
     Ghost Batch Norm from [this paper](https://arxiv.org/abs/1705.08741)).
 -   Decoupling the total batch size and the number of examples used to calculate
     batch norm statistics is particularly useful for batch size comparisons.
