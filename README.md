@@ -859,8 +859,7 @@ if issues are discovered, revise the experiments and rerun them.*
         value it achieved over the course of training.
 
 <p align="center" id="figure-1">
-<img src="assets/bad_search_space.png" width="49%" alt="Example of bad search space boundaries">
-<img src="assets/good_search_space.png" width="49%" alt="Example of good search space boundaries">
+<img src="assets/good_and_bad_search_spaces.png" width="98%" alt="Example of good search space boundaries">
 </p>
 
 <p align="center"><b>Figure 1:</b> Examples of bad search space boundaries and acceptable search space boundaries.</p>
@@ -1001,7 +1000,7 @@ failure modes and can help us prioritize what actions to take next.*
 
 
 <p align="center" id="figure-2">
-<img src="assets/isolation_plot.png" width="49%" alt="Isolation plot that investigates the best value of weight decay for ResNet-50
+<img src="assets/basic_isolation_plot.png" width="55%" alt="Isolation plot that investigates the best value of weight decay for ResNet-50
 trained on ImageNet.">
 </p>
 
@@ -1776,7 +1775,7 @@ multi-host training can make it very easy to introduce bugs!*
 <br>
 
 <p align="center">
-<img src="assets/have_we_sampled_enough.png" width="49%" alt="A box plot showing the importance of sampling enough">
+<img src="assets/validation_error_vs_num_trials.png" width="55%" alt="A box plot showing the importance of sampling enough">
 </p>
 
 <p align="center"><b>Figure 3:</b> A ResNet-50 was tuned on ImageNet with 100
