@@ -859,7 +859,8 @@ if issues are discovered, revise the experiments and rerun them.*
         value it achieved over the course of training.
 
 <p align="center" id="figure-1">
-<img src="assets/good_and_bad_search_spaces.png" width="98%" alt="Example of good search space boundaries">
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/bad_search_space.png" width="49%" alt="Example of bad search space boundaries">
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/good_search_space.png" width="49%" alt="Example of good search space boundaries">
 </p>
 
 <p align="center"><b>Figure 1:</b> Examples of bad search space boundaries and acceptable search space boundaries.</p>
@@ -1000,7 +1001,7 @@ failure modes and can help us prioritize what actions to take next.*
 
 
 <p align="center" id="figure-2">
-<img src="assets/basic_isolation_plot.png" width="55%" alt="Isolation plot that investigates the best value of weight decay for ResNet-50
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/isolation_plot.png" width="49%" alt="Isolation plot that investigates the best value of weight decay for ResNet-50
 trained on ImageNet.">
 </p>
 
@@ -1775,7 +1776,7 @@ multi-host training can make it very easy to introduce bugs!*
 <br>
 
 <p align="center">
-<img src="assets/validation_error_vs_num_trials.png" width="55%" alt="A box plot showing the importance of sampling enough">
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/have_we_sampled_enough.png" width="49%" alt="A box plot showing the importance of sampling enough">
 </p>
 
 <p align="center"><b>Figure 3:</b> A ResNet-50 was tuned on ImageNet with 100
@@ -1807,7 +1808,7 @@ important to fix them before trying other things. Diagnosing and correcting
 training failures is an active area of research.*
 
 <p align="center">
-<img src="assets/stride_instability.png" width="80%" alt="Changing the strides in a single residual block in a WideResnet results in training instability.">
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/stride_instability.png" width="80%" alt="Changing the strides in a single residual block in a WideResnet results in training instability.">
 </p>
 
 
@@ -1840,7 +1841,7 @@ To check for this, we can train for an abbreviated run of just \~500 steps using
 `lr = 2 * current best`, but evaluate every step.
 
 <p align="center">
-<img src="assets/more_frequent_evals.png" width="80%" alt="Illustration of the value of more frequent evaluations at the start of
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/more_frequent_evals.png" width="80%" alt="Illustration of the value of more frequent evaluations at the start of
 training.">
 </p>
 
@@ -1871,7 +1872,7 @@ training.">
 #### Learning rate warmup
 
 <p align="center">
-<img src="assets/instability_during_warmup.png" width="80%" alt="An example of instability during a warmup period (note the horizontal axis log
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/instability_during_warmup.png" width="80%" alt="An example of instability during a warmup period (note the horizontal axis log
 scale).">
 </p>
 
@@ -1880,13 +1881,13 @@ scale).">
 ##### When to apply learning rate warmup
 
 <p align="center">
-<img src="assets/axis_model_with_instability.png" width="49%" alt="Axis plot for model with instability">
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/axis_model_with_instability.png" width="49%" alt="Axis plot for model with instability">
 </p>
 
 <p align="center"><b>Figure 7a:</b> An example of a hyperparameter axis plot for a model exhibiting training instability. The best learning rate is at the edge of what is feasible. An "infeasible" trial is defined as one that either produces NaNs or uncharacteristically high values of the loss.</p>
 
 <p align="center">
-<img src="assets/loss_model_with_instability.png" width="49%" alt="Loss curve for model with instability">
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/loss_model_with_instability.png" width="49%" alt="Loss curve for model with instability">
 </p>
 
 <p align="center"><b>Figure 7b:</b> The training loss of a model trained with a learning rate where we see instability.</p>
@@ -1903,7 +1904,7 @@ scale).">
 ##### How to apply learning rate warmup
 
 <p align="center">
-<img src="assets/beneficial_effect_warmup.png" width="80%" alt="Beneficial effect of warmup on training instabilities">
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/beneficial_effect_warmup.png" width="80%" alt="Beneficial effect of warmup on training instabilities">
 </p>
 
 <p align="center"><b>Figure 8:</b> Beneficial effect of learning rate warmup on addressing training instabilities.</p>
@@ -1948,7 +1949,7 @@ scale).">
 #### Gradient clipping
 
 <p align="center">
-<img src="assets/gradient_clipping.png" width="80%" alt="Gradient clipping on early training instabilities">
+<img src="https://github.com/google-research/tuning_playbook/tree/main/assets/gradient_clipping.png" width="80%" alt="Gradient clipping on early training instabilities">
 </p>
 
 <p align="center"><b>Figure 9:</b> Illustration of gradient clipping correcting early training instability.</p>
