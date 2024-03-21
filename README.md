@@ -1755,7 +1755,7 @@ multi-host training can make it very easy to introduce bugs!*
 <br>
 
 -   [Open-Source Vizier](https://github.com/google/vizier) has an [implementation
-    of quasi-ranom search](https://github.com/google/vizier/blob/main/vizier/_src/algorithms/designers/quasi_random.py). Set `algorithm="QUASI_RANDOM_SEARCH"` in [this usage example](https://oss-vizier.readthedocs.io/en/latest/guides/user/running_vizier.html).
+    of quasi-random search](https://github.com/google/vizier/blob/main/vizier/_src/algorithms/designers/quasi_random.py). Set `algorithm="QUASI_RANDOM_SEARCH"` in [this usage example](https://oss-vizier.readthedocs.io/en/latest/guides/user/running_vizier.html).
 -   An alternative implementation exists
     [here](https://github.com/mlcommons/algorithmic-efficiency/blob/main/algorithmic_efficiency/halton.py).
 -   Both implementations above generate a Halton sequence for a given search space (intended to
