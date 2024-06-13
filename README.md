@@ -1861,8 +1861,7 @@ training.">
     architecture (examples below).
     -   Add residual connections and normalization if the model doesn't contain
         it already.
--   Normalization should be the last operation before the residual. E.g. x +
-    Norm(f(x)).
+-   Normalization should be inside the residual. E.g. x + f(Norm(x)).
 -   Norm(x + f(x)) known to cause issues.
 -   Try initializing residual branches to 0 (e.g.
     [ReZero init](https://arxiv.org/abs/2003.04887)).
