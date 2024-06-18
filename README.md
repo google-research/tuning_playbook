@@ -1731,14 +1731,14 @@ multi-host training can make it very easy to introduce bugs!*
             pitfalls for inexperienced users. Experts in these methods are able
             to get good results, but in high-parallelism conditions the search
             space and budget tend to matter a lot more.
--   Quasi-random search can be used together with
-    [Hyperband](https://jmlr.org/papers/volume18/16-558/16-558.pdf) /
-    [ASHA](https://arxiv.org/abs/1810.05934), which quickly discard points that
-    aren't promising from the search.
 -   That said, if our computational resources only allow a small number of
     trials to run in parallel and we can afford to run many trials in sequence,
     Bayesian optimization becomes much more attractive despite making our tuning
     results harder to interpret.
+-   Both quasi-random search and Bayesian optimization can be used together with
+    [Hyperband](https://jmlr.org/papers/volume18/16-558/16-558.pdf) /
+    [ASHA](https://arxiv.org/abs/1810.05934), which quickly discard points that
+    aren't promising from the search.
 
 [^3]: Ben Recht and Kevin Jamieson
     [pointed out](http://www.argmin.net/2016/06/20/hypertuning/) how strong
